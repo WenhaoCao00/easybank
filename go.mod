@@ -1,6 +1,6 @@
 module github.com/WenhaoCao00/easybank
 
-go 1.23.1
+go 1.23
 
 require (
 	github.com/lib/pq v1.10.9
