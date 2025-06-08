@@ -10,8 +10,7 @@ on:
     branches: ["main"]
 
 jobs:
-  test:
-    name: Test
+  build:
     runs-on: ubuntu-latest
 
     services:
@@ -20,15 +19,13 @@ jobs:
         env:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: secret
-          POSTGRES_DB: simple_bank
+          POSTGRES_DB: easy_bank
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
 
-  build:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
