@@ -8,7 +8,7 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	gin.SetMode(gin.TestMode)
+	gin.SetMode(gin.DebugMode)
 
 	os.Exit(m.Run())
 }
