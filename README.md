@@ -97,3 +97,9 @@ The service that we’re going to build is a easy bank. It will provide APIs for
   ```bash
   make test
   ```
+
+## Running the program in Docker
+
+```bash
+docker compose up
+```
