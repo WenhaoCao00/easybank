@@ -64,7 +64,23 @@ The service that we’re going to build is a easy bank. It will provide APIs for
   make migratedown1
   ```
 
+### Documentation
+
+- Generate DB documentation:
+
+  ```bash
+  make db_docs
+  ```
+
+- Access the DB documentation at [this address](https://dbdocs.io/WenhaoCao00/easy_bank). Password: `secret`
+
 ### How to generate code
+
+- Generate schema SQL file with DBML:
+
+  ```bash
+  make db_schema
+  ```
 
 - Generate SQL CRUD with sqlc:
 
