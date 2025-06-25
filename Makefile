@@ -43,8 +43,12 @@ mock:
 
 proto:
 	rm -f pb/*.go
-	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative \
-	--go-grpc_out=pb --go-grpc_opt=paths=source_relative \
-	proto/*.proto
+	find proto -name "*.proto" | xargs protoc \
+	    --proto_path=proto \
+	    --go_out=pb --go_opt=paths=source_relative \
+	    --go-grpc_out=pb --go-grpc_opt=paths=source_relative
 
-.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 db_docs db_schema sqlc test server mock proto
+evans:
+	evans --host localhost --port 8999 -r repl
+
+.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 db_docs db_schema sqlc test server mock proto evans
