@@ -19,139 +19,139 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SimpleBank_CreateUser_FullMethodName = "/pb.SimpleBank/CreateUser"
-	SimpleBank_LoginUser_FullMethodName  = "/pb.SimpleBank/LoginUser"
+	EasyBank_CreateUser_FullMethodName = "/pb.EasyBank/CreateUser"
+	EasyBank_LoginUser_FullMethodName  = "/pb.EasyBank/LoginUser"
 )
 
-// SimpleBankClient is the client API for SimpleBank service.
+// EasyBankClient is the client API for EasyBank service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type SimpleBankClient interface {
+type EasyBankClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
 }
 
-type simpleBankClient struct {
+type easyBankClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewSimpleBankClient(cc grpc.ClientConnInterface) SimpleBankClient {
-	return &simpleBankClient{cc}
+func NewEasyBankClient(cc grpc.ClientConnInterface) EasyBankClient {
+	return &easyBankClient{cc}
 }
 
-func (c *simpleBankClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+func (c *easyBankClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateUserResponse)
-	err := c.cc.Invoke(ctx, SimpleBank_CreateUser_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, EasyBank_CreateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *simpleBankClient) LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error) {
+func (c *easyBankClient) LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(LoginUserResponse)
-	err := c.cc.Invoke(ctx, SimpleBank_LoginUser_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, EasyBank_LoginUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// SimpleBankServer is the server API for SimpleBank service.
-// All implementations must embed UnimplementedSimpleBankServer
+// EasyBankServer is the server API for EasyBank service.
+// All implementations must embed UnimplementedEasyBankServer
 // for forward compatibility.
-type SimpleBankServer interface {
+type EasyBankServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
-	mustEmbedUnimplementedSimpleBankServer()
+	mustEmbedUnimplementedEasyBankServer()
 }
 
-// UnimplementedSimpleBankServer must be embedded to have
+// UnimplementedEasyBankServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedSimpleBankServer struct{}
+type UnimplementedEasyBankServer struct{}
 
-func (UnimplementedSimpleBankServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+func (UnimplementedEasyBankServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedSimpleBankServer) LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error) {
+func (UnimplementedEasyBankServer) LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginUser not implemented")
 }
-func (UnimplementedSimpleBankServer) mustEmbedUnimplementedSimpleBankServer() {}
-func (UnimplementedSimpleBankServer) testEmbeddedByValue()                    {}
+func (UnimplementedEasyBankServer) mustEmbedUnimplementedEasyBankServer() {}
+func (UnimplementedEasyBankServer) testEmbeddedByValue()                  {}
 
-// UnsafeSimpleBankServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to SimpleBankServer will
+// UnsafeEasyBankServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to EasyBankServer will
 // result in compilation errors.
-type UnsafeSimpleBankServer interface {
-	mustEmbedUnimplementedSimpleBankServer()
+type UnsafeEasyBankServer interface {
+	mustEmbedUnimplementedEasyBankServer()
 }
 
-func RegisterSimpleBankServer(s grpc.ServiceRegistrar, srv SimpleBankServer) {
-	// If the following call pancis, it indicates UnimplementedSimpleBankServer was
+func RegisterEasyBankServer(s grpc.ServiceRegistrar, srv EasyBankServer) {
+	// If the following call pancis, it indicates UnimplementedEasyBankServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&SimpleBank_ServiceDesc, srv)
+	s.RegisterService(&EasyBank_ServiceDesc, srv)
 }
 
-func _SimpleBank_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _EasyBank_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SimpleBankServer).CreateUser(ctx, in)
+		return srv.(EasyBankServer).CreateUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SimpleBank_CreateUser_FullMethodName,
+		FullMethod: EasyBank_CreateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SimpleBankServer).CreateUser(ctx, req.(*CreateUserRequest))
+		return srv.(EasyBankServer).CreateUser(ctx, req.(*CreateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SimpleBank_LoginUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _EasyBank_LoginUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LoginUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SimpleBankServer).LoginUser(ctx, in)
+		return srv.(EasyBankServer).LoginUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SimpleBank_LoginUser_FullMethodName,
+		FullMethod: EasyBank_LoginUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SimpleBankServer).LoginUser(ctx, req.(*LoginUserRequest))
+		return srv.(EasyBankServer).LoginUser(ctx, req.(*LoginUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// SimpleBank_ServiceDesc is the grpc.ServiceDesc for SimpleBank service.
+// EasyBank_ServiceDesc is the grpc.ServiceDesc for EasyBank service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var SimpleBank_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.SimpleBank",
-	HandlerType: (*SimpleBankServer)(nil),
+var EasyBank_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.EasyBank",
+	HandlerType: (*EasyBankServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateUser",
-			Handler:    _SimpleBank_CreateUser_Handler,
+			Handler:    _EasyBank_CreateUser_Handler,
 		},
 		{
 			MethodName: "LoginUser",
-			Handler:    _SimpleBank_LoginUser_Handler,
+			Handler:    _EasyBank_LoginUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

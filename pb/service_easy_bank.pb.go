@@ -7,6 +7,7 @@
 package pb
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,12 +25,11 @@ var File_service_easy_bank_proto protoreflect.FileDescriptor
 
 const file_service_easy_bank_proto_rawDesc = "" +
 	"\n" +
-	"\x17service_easy_bank.proto\x12\x02pb\x1a\x15rpc_create_user.proto\x1a\x14rpc_login_user.proto2\x87\x01\n" +
+	"\x17service_easy_bank.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\x15rpc_create_user.proto\x1a\x14rpc_login_user.proto2\xb8\x01\n" +
+	"\bEasyBank\x12W\n" +
 	"\n" +
-	"SimpleBank\x12=\n" +
-	"\n" +
-	"CreateUser\x12\x15.pb.CreateUserRequest\x1a\x16.pb.CreateUserResponse\"\x00\x12:\n" +
-	"\tLoginUser\x12\x14.pb.LoginUserRequest\x1a\x15.pb.LoginUserResponse\"\x00B$Z\"github.com/WenhaoCao00/easybank/pbb\x06proto3"
+	"CreateUser\x12\x15.pb.CreateUserRequest\x1a\x16.pb.CreateUserResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/v1/create_user\x12S\n" +
+	"\tLoginUser\x12\x14.pb.LoginUserRequest\x1a\x15.pb.LoginUserResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/login_userB$Z\"github.com/WenhaoCao00/easybank/pbb\x06proto3"
 
 var file_service_easy_bank_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),  // 0: pb.CreateUserRequest
@@ -38,10 +38,10 @@ var file_service_easy_bank_proto_goTypes = []any{
 	(*LoginUserResponse)(nil),  // 3: pb.LoginUserResponse
 }
 var file_service_easy_bank_proto_depIdxs = []int32{
-	0, // 0: pb.SimpleBank.CreateUser:input_type -> pb.CreateUserRequest
-	1, // 1: pb.SimpleBank.LoginUser:input_type -> pb.LoginUserRequest
-	2, // 2: pb.SimpleBank.CreateUser:output_type -> pb.CreateUserResponse
-	3, // 3: pb.SimpleBank.LoginUser:output_type -> pb.LoginUserResponse
+	0, // 0: pb.EasyBank.CreateUser:input_type -> pb.CreateUserRequest
+	1, // 1: pb.EasyBank.LoginUser:input_type -> pb.LoginUserRequest
+	2, // 2: pb.EasyBank.CreateUser:output_type -> pb.CreateUserResponse
+	3, // 3: pb.EasyBank.LoginUser:output_type -> pb.LoginUserResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
